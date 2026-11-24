@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plat'Forme – plats faits maison par vos voisins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+  <div class="topbar-in">
+    <a class="logo" href="#top">Plat’Forme</a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-nav">☰</button>
+    <nav id="menu-nav" class="nav">
+      <a href="#menu">Menu</a>
+      <a href="#comment">Comment ça marche</a>
+      <a href="#cuisiniers">Cuisiner</a>
+      <a class="btn btn-main nav-cta" href="#cuisiniers">Rejoindre</a>
+    </nav>
+  </div>
+</header>
+
+  <main id="top">
+    <div class="hero">
+      <h1>Le plat de ta voisine, chez toi.</h1>
+      <p>Des habitants de ta communauté cuisinent chez eux les recettes qu’ils connaissent par cœur. Tu commandes, tu récupères ou on te livre.</p>
+      <div class="actions">
+        <a class="btn btn-main" href="#menu">Voir les plats de la semaine</a>
+        <a class="btn btn-alt" href="#cuisiniers">Je veux cuisiner</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<section id="menu">
+  <div class="wrap">
+    <h2>Au menu cette semaine</h2>
+    <p class="lead">Choisis une cuisine pour voir ses entrées, ses plats et ses desserts.</p>
+    <div class="cuisines" id="cuisines" role="group" aria-label="Choisir une cuisine"></div>
+    <div id="panel" aria-live="polite"></div>
+    <p class="note">Ces plats sont des exemples pour montrer à quoi ressemblera le site. Les vrais cuisiniers arrivent bientôt.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Comment ça marche</h2>
+    <p class="lead">Trois étapes, sans application à installer.</p>
+    <ol class="steps">
+      <li><h3>Tu choisis un plat</h3><p>Tu regardes le menu de ton quartier et tu envoies ta commande.</p></li>
+      <li><h3>Ton voisin cuisine</h3><p>Il prépare ton plat chez lui, le jour annoncé, avec les allergènes indiqués.</p></li>
+      <li><h3>Tu récupères ou on te livre</h3><p>Tu passes le chercher, ou tu te fais livrer quand la livraison est proposée.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="cuisiniers">
+  <div class="wrap cook">
+    <div>
+      <h2>Tu cuisines bien ? Gagne de l’argent avec.</h2>
+      <p class="lead">Tu cuisines chez toi, tu fixes tes prix et tes jours. Nous trouvons les clients et nous gérons les commandes.</p>
+      <ul class="rules">
+        <li>Tu gardes la plus grande part de chaque vente.</li>
+        <li>Tu choisis combien de plats tu prépares.</li>
+        <li>Tu dois respecter les règles d’hygiène et indiquer les allergènes. Nous t’aidons à faire les démarches.</li>
+      </ul>
+      <div class="calc">
+        <label for="price">Prix d’un plat (€)
+          <input id="price" type="number" min="1" max="100" value="12" inputmode="decimal">
+        </label>
+        <label for="qty" style="margin-top:12px">Plats vendus par semaine
+          <input id="qty" type="number" min="1" max="200" value="10" inputmode="numeric">
+        </label>
+        <p style="margin:16px 0 0">Tu gagnes environ <strong id="gain">108 €</strong> par semaine.</p>
+        <p class="tag" style="margin:4px 0 0">Calcul avec une commission de 10 %. Taux de départ, à confirmer.</p>
+      </div>
+    </div>
+    <form id="join">
+      <h3>Rejoins les premiers cuisiniers</h3>
+      <label for="nom">Ton prénom<input id="nom" required autocomplete="given-name"></label>
+      <label for="ville">Ta ville ou ton quartier<input id="ville" required autocomplete="address-level2"></label>
+      <label for="cuisine">Ce que tu cuisines
+        <select id="cuisine">
+          <option>Italienne</option><option>Antillaise</option><option>Africaine</option><option>Maghrébine</option>
+          <option>Tamoule</option><option>Asiatique</option><option>Autre</option>
+        </select>
+      </label>
+      <button class="btn btn-main" type="submit">Envoyer ma demande</button>
+      <p class="tag" style="margin:0">Ta demande s’ouvre dans ta messagerie, prête à envoyer.</p>
+    </form>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>Plat'Forme est un projet en cours de lancement. Les cuisiniers doivent être déclarés et respecter la réglementation sur l’hygiène alimentaire.</footer>
+</div>
+
+<script>
+const menu={
+ "Italienne":{e:"🍝",items:[
+  {g:"Plats",e:"🍝",n:"Pâtes à la carbonara",by:"Giulia",p:11},
+  {g:"Plats",e:"🍕",n:"Pizza maison",by:"Marco",p:12},
+  {g:"Plats",e:"🥘",n:"Lasagnes",by:"Giulia",p:12},
+  {g:"Desserts",e:"🍰",n:"Tiramisu",by:"Marco",p:5},
+  {g:"Desserts",e:"🍮",n:"Panna cotta",by:"Giulia",p:5}]},
+ "Antillaise":{e:"🍛",items:[
+  {g:"Entrées",e:"🧆",n:"Accras de morue",by:"Marie-Line",p:6},
+  {g:"Plats",e:"🍛",n:"Colombo de poulet",by:"Marie-Line",p:13},
+  {g:"Plats",e:"🐟",n:"Poisson grillé et riz",by:"Josiane",p:14},
+  {g:"Desserts",e:"🥥",n:"Flan coco",by:"Josiane",p:4}]},
+ "Africaine":{e:"🥘",items:[
+  {g:"Plats",e:"🥘",n:"Mafé au bœuf",by:"Aminata",p:12},
+  {g:"Plats",e:"🍗",n:"Poulet yassa",by:"Ousmane",p:13},
+  {g:"Desserts",e:"🍩",n:"Beignets sucrés",by:"Aminata",p:4},
+  {g:"Boissons",e:"🧃",n:"Jus de bissap",by:"Ousmane",p:3}]},
+ "Maghrébine":{e:"🍲",items:[
+  {g:"Entrées",e:"🥗",n:"Salade marocaine",by:"Samira",p:5},
+  {g:"Plats",e:"🍲",n:"Couscous royal",by:"Samira",p:15},
+  {g:"Plats",e:"🍖",n:"Tajine de poulet",by:"Karim",p:13},
+  {g:"Desserts",e:"🍯",n:"Makrout au miel",by:"Samira",p:5}]},
+ "Tamoule":{e:"🍚",items:[
+  {g:"Entrées",e:"🥟",n:"Samoussas",by:"Kavitha",p:5},
+  {g:"Plats",e:"🍚",n:"Riz au curry de poisson",by:"Kavitha",p:12},
+  {g:"Plats",e:"🫓",n:"Dosa et chutney",by:"Ravi",p:10},
+  {g:"Desserts",e:"🍮",n:"Payasam",by:"Ravi",p:4}]},
+ "Asiatique":{e:"🥟",items:[
+  {g:"Entrées",e:"🌯",n:"Nems maison",by:"Linh",p:6},
+  {g:"Plats",e:"🍜",n:"Soupe pho",by:"Linh",p:12},
+  {g:"Plats",e:"🥟",n:"Boulettes de bœuf",by:"Minh",p:11},
+  {g:"Desserts",e:"🍡",n:"Mochis",by:"Minh",p:5}]}
+};
+const order=["Entrées","Plats","Desserts","Boissons"];
+let active="Italienne";
+const bar=document.getElementById("cuisines"),panel=document.getElementById("panel");
+function render(){
+  bar.innerHTML="";
+  Object.keys(menu).forEach(c=>{
+    const b=document.createElement("button");
+    b.type="button";b.className="cuisine";
+    b.innerHTML=`<span aria-hidden="true">${menu[c].e}</span>${c}`;
+    b.setAttribute("aria-pressed",c===active);
+    b.onclick=()=>{active=c;render()};
+    bar.appendChild(b);
+  });
+  const items=menu[active].items;
+  let html=`<h3 class="panel-title">Cuisine ${active.toLowerCase()}</h3>`;
+  order.forEach(g=>{
+    const list=items.filter(i=>i.g===g);
+    if(!list.length)return;
+    html+=`<h4 class="group">${g}</h4><div class="grid">`+list.map(d=>`<article class="dish"><div class="emoji" aria-hidden="true">${d.e}</div><h3>${d.n}</h3><div class="by">par ${d.by}</div><div class="row"><span class="price">${d.p} €</span></div></article>`).join("")+`</div>`;
+  });
+  panel.innerHTML=html;
+}
+render();
+const price=document.getElementById("price"),qty=document.getElementById("qty"),gain=document.getElementById("gain");
+function calc(){
+  const t=(parseFloat(price.value)||0)*(parseFloat(qty.value)||0)*0.9;
+  gain.textContent=Math.round(t)+" €";
+}
+price.oninput=calc;qty.oninput=calc;calc();
+document.getElementById("join").addEventListener("submit",e=>{
+  e.preventDefault();
+  const body=`Bonjour,\nJe m’appelle ${document.getElementById("nom").value}, je cuisine à ${document.getElementById("ville").value} (cuisine ${document.getElementById("cuisine").value.toLowerCase()}).\nJe voudrais rejoindre Plat'Forme.`;
+  location.href="mailto:contact@exemple.fr?subject="+encodeURIComponent("Je veux cuisiner")+"&body="+encodeURIComponent(body);
+});
+</script>
+</body>
+</html>
